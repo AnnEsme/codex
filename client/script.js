@@ -64,7 +64,7 @@ const handleSubmit = async (e)  => {
 
   // Users chatstripe
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
-  
+
   form.reset();
 
   // Bots chatstripe
@@ -78,8 +78,7 @@ const handleSubmit = async (e)  => {
   loader(messageDiv);
 
   //fetch data from the server -> bot's response
- const response = await fetch('https://codex-a10l.onrender.com/', {
- //const response = await fetch('http://localhost:5000/', {
+  const response = await fetch('http://localhost:5000', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
