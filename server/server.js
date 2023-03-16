@@ -25,11 +25,11 @@ app.post('/', async (req, res) => {
     try{
         const prompt = req.body.prompt;
 
-        const response = await openai.createChatCompletion ({
-            model: "gpt-3.5-turbo",
-            messages : [{ role: 'user', content: `${prompt}` }],
+        const response = await openai.createCompletion ({
+            model: "text-davinci-003",
+            messages : `${prompt}`,
             temperature: 0,
-            max_tokens: 3000,
+            max_tokens: 2000,
             top_p: 1,
             frequency_penalty: 0.5,
             presence_penalty: 0,
@@ -37,7 +37,7 @@ app.post('/', async (req, res) => {
         });
 
         res.status(200).send({
-            bot: response.data.choices[0].message.content
+            bot: response.data.choices[0].text
         })
 
     } catch (error) {
